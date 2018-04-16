@@ -1,0 +1,2 @@
+requesturl: https://www.flexport.com/data/hs-code/0-all-commodities   responseurl: https://www.flexport.com/data/hs-code/0-all-commodities 
+requesturl: https://www.flexport.com/data/hs-code/0-all-commodities   responseurl: https://www.flexport.com/data/hs-code/0-all-commodities 

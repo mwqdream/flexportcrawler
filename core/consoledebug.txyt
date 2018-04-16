@@ -1,0 +1,39 @@
+import os
+import sys
+import socket
+import urllib.request
+import urllib.parse
+import re
+import pymysql
+import time
+import random
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.common.keys import Keys
+import pymongo
+from pymongo import MongoClient
+
+os.chdir("D://pycode//crawl//flexport//core")
+os.path.abspath('.')
+
+
+sleep_time=2
+phantomjspath='../tool/phantomjs/phantomjs2/bin/phantomjs.exe'
+
+dcap = dict(DesiredCapabilities.PHANTOMJS)
+# user-agent等配置
+dcap['phantomjs.page.settings.userAgent'] = (
+    'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
+# service_args设置(基本设置）
+service_args0 = ['--ignore-ssl-errors=true', '--ssl-protocol=any']
+#  设置代理
+service_args1 = ['--proxy=127.0.0.1:1080', '--proxy-type=socks5']
+browser = webdriver.PhantomJS(executable_path=phantomjspath,
+                              service_args=service_args0 + service_args1,
+                              service_log_path='../log/phantomjs/phan.log',
+                              desired_capabilities=dcap)
+browser.set_page_load_timeout(20)
+
+url='https://www.flexport.com/data/hs-code/0-all-commodities'
+browser.get(url)
